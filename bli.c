@@ -25,6 +25,7 @@ int main() {
   ostern = 22 + d + e - 7 * f;
   // Ausgabe
   printf("\n");
+  // Ostern ist März
   if (ostern <= 31) {
     if (currentyear > year) {
       printf("Ostersonntag war am %d.M\x84rz\n", ostern);
@@ -33,6 +34,7 @@ int main() {
       printf("Ostersonntag ist am %d.M\x84rz\n", ostern);
       printf("\n");
     }
+    // Ostern ist April
   } else {
     if (currentyear > year) {
       printf("Ostersonntag war am %d.April\n", ostern - 31);
