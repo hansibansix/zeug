@@ -2,15 +2,16 @@
 #include <time.h>
 
 int main() {
+  // Variablen
   time_t now;
   time(&now);
   struct tm *local = localtime(&now);
   int currentyear, year, a, b, c, h1, h2, N, M, d, e, f, ostern;
   currentyear = local->tm_year + 1900;
-
+  // Jahreseingabe
   printf("Enter year: ");
   scanf("%d", &year);
-
+  // Berechnung
   a = year % 4;
   b = year % 7;
   c = year % 19;
@@ -22,7 +23,7 @@ int main() {
   e = (2 * a + 4 * b + 6 * d + N) % 7;
   f = (c + 11 * d + 22 * e) / 451;
   ostern = 22 + d + e - 7 * f;
-
+  // Ausgabe
   printf("\n");
   if (ostern <= 31) {
     if (currentyear > year) {
@@ -41,6 +42,7 @@ int main() {
       printf("\n");
     }
   }
+  // Recursion
   main();
   return 0;
 }
