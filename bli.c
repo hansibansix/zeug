@@ -1,24 +1,16 @@
-// Osterberechnung
-
 #include <stdio.h>
 #include <time.h>
 
-int main()
-
-{
-  // Variablen
-
-  int t, ts, tm_year, year, a, b, c, h1, h2, N, M, d, e, f, ostern, currentyear;
-  t = time(NULL);
-  ts = localtime(&t);
-  printf("%d\n", currentyear);
-  // Jahreseingabe
+int main() {
+  time_t now;
+  time(&now);
+  struct tm *local = localtime(&now);
+  int currentyear, year, a, b, c, h1, h2, N, M, d, e, f, ostern;
+  currentyear = local->tm_year + 1900;
 
   printf("Enter year: ");
   scanf("%d", &year);
-  printf("\n");
 
-  // Gaussche Osterformel
   a = year % 4;
   b = year % 7;
   c = year % 19;
@@ -31,29 +23,24 @@ int main()
   f = (c + 11 * d + 22 * e) / 451;
   ostern = 22 + d + e - 7 * f;
 
-  // März oder April
-
+  printf("\n");
   if (ostern <= 31) {
     if (currentyear > year) {
-      printf("Ostersonntag war am %d.März %d \n", ostern, year);
+      printf("Ostersonntag war am %d.M\x84rz\n", ostern);
       printf("\n");
     } else {
-      printf("Ostersonntag ist am %d.März %d \n", ostern, year);
+      printf("Ostersonntag ist am %d.M\x84rz\n", ostern);
       printf("\n");
     }
   } else {
     if (currentyear > year) {
-
-      printf("Ostersonntag war am %d.April %d\n", ostern - 31, year);
+      printf("Ostersonntag war am %d.April\n", ostern - 31);
       printf("\n");
     } else {
-      printf("Ostersonntag ist am %d.April %d \n", ostern - 31, year);
+      printf("Ostersonntag ist am %d.April\n", ostern - 31);
       printf("\n");
     }
   }
-
-  // Recursion
-
   main();
   return 0;
 }
