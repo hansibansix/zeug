@@ -1,4 +1,3 @@
-#include <math.h>
 #include <stdio.h>
 int main() {
   float a, b, ergebnis;
@@ -21,7 +20,11 @@ int main() {
   case '/':
     ergebnis = a / b;
     break;
+  default:
+    printf("Error\n");
+    break;
   }
+
   printf("%.2f %c %.2f = %.2f \n", a, operand, b, ergebnis);
   printf("\n");
 
